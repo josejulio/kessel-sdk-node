@@ -6,7 +6,7 @@
     "declaration": false,
     "rootDir": "./",
     "esModuleInterop": true,
-    "strict": true,
+    "strict": true
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules"]

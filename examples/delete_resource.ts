@@ -1,16 +1,5 @@
-import { createChannel, createClient } from "nice-grpc";
-import {
-  KesselInventoryServiceClient,
-  KesselInventoryServiceDefinition,
-} from "kessel-sdk/kessel/inventory/v1beta2/inventory_service";
 import { DeleteResourceRequest } from "kessel-sdk/kessel/inventory/v1beta2/delete_resource_request";
-
-const channel = createChannel("localhost:9081");
-
-const stub: KesselInventoryServiceClient = createClient(
-  KesselInventoryServiceDefinition,
-  channel,
-);
+import { client } from "./client";
 
 const deleteResourceRequest: DeleteResourceRequest = {
   reference: {
@@ -22,11 +11,13 @@ const deleteResourceRequest: DeleteResourceRequest = {
   },
 };
 
-try {
-  const response = await stub.deleteResource(deleteResourceRequest);
-  console.log("Delete Resource response received successfully:");
-  console.log(response);
-} catch (e) {
-  console.log("gRPC error occurred during Delete Resource:");
-  console.log(`Exception:`, e);
-}
+(async () => {
+  try {
+    const response = await client.deleteResource(deleteResourceRequest);
+    console.log("Delete Resource response received successfully:");
+    console.log(response);
+  } catch (e) {
+    console.log("gRPC error occurred during Delete Resource:");
+    console.log(`Exception:`, e);
+  }
+})();

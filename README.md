@@ -19,8 +19,12 @@ Building the SDK will create three directories:
 
 ## Running examples
 
-The [./examples](./examples) directory demonstrates how to use this library. 
+The [./examples](./examples) directory demonstrates how to use this library.
 You must [build](#building) the SDK before running any examples.
+
+Examples assume that Kessel is configured, and we're able to connect with an insecure connection on localhost:9081.
+If that's not the case - you can head over (./examples/client.ts)[./examples/client.ts] to adjust to your use case.
+There are some examples on how to create a client with different configurations.
 
 1. `cd examples`
 2. `npm install`
